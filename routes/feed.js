@@ -12,13 +12,23 @@ router.get("/posts", feedController.getPosts);
 router.post(
   "/post",
   [
-    body("title").trim().isLength({ min: 5 }),
-    body("content").trim().isLength({ min: 5 }),
+    body("title").trim().isLength({ min: 3 }),
+    body("content").trim().isLength({ min: 3 }),
   ],
   feedController.createPost
 );
 
 // GET /feed/post/:postId
 router.get("/post/:postId", feedController.getPost);
+
+// PUT /feed/post/:postId
+router.put(
+  "/post/:postId",
+  [
+    body("title").trim().isLength({ min: 3 }),
+    body("content").trim().isLength({ min: 3 }),
+  ],
+  feedController.updatePost
+);
 
 module.exports = router;
