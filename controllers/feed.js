@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { validationResult } = require("express-validator/check");
+const { validationResult } = require("express-validator");
 
 const Post = require("../models/post");
 const User = require("../models/user");
@@ -24,7 +24,7 @@ exports.getPosts = async (req, res, next) => {
       posts: posts,
       totalItems: totalItems,
     });
-  } catch (error) {
+  } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
